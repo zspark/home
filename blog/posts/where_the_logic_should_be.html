@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件设计思考：逻辑应该放在哪里？</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav-back">
+            <a href="../" class="back-link">&larr; Back to thoughts</a>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+        </nav>
+
+        <main>
+            <article>
+                <header>
+                    <div class="meta">Published July 7, 2026 &bull; 3 min read</div>
+                    <h1>Where The Logic Should Be?</h1>
+                </header>
+
+                <div class="content">
+
+                    <p>如果有这样的代码：</p>
+                    <pre><code>
+    function Clip(pos:vec3, direction:vec3):void{/* your logic */}
+
+    function GoingToClipSomething():void{
+        const _pos:vec3=new vec3(a,b,c);
+        const _dir:vec3=new vec3(d,e,f);
+        Clip(_pos,_dir);
+    }
+
+    function GoingToClipSomeOtherThing():void{
+        //....
+        Clip(...);
+    }
+
+    function GoingToClip...;
+                        </code></pre>
+                    <p>
+                        Clip 函数会在 <code>pos</code> 位置开始，将 <code>direction</code> 一侧的所有东西裁剪掉（想象剖切钢管这件事）。
+                    </p>
+
+                    <p>
+                        上面的逻辑没有问题，不过需求有变，希望总是剖切<strong>视野能见到的一侧</strong>。那么就需要判断
+                        <code>direction</code> 的方向是否指向视野原点，如果不是就取反即可，也很简单，不是么。
+                    </p>
+
+                    <p>
+                        但，思考点来了：<strong>这个逻辑我要添加在哪里？是 GoingToClip 函数里面，还是 Clip 函数里面？</strong>
+                    </p>
+
+                    <ul>
+                        <li>
+                            放在GoingToClip... 的话，Clip逻辑保持简单直接： 在pos位置开始，将direction 一侧的所有东西裁剪掉。
+                        </li>
+
+                        <li>
+                            放在Clip的话，调用Clip的众多函数保持不变，修改简单快捷。
+                        </li>
+                    </ul>
+
+                    <h2>那么怎么抉择？</h2>
+
+                    <p>
+                        单从软件设计的角度来说，<code>Clip</code> 作为被调用方，应该保持<strong>通用性</strong>、<strong>简单性</strong>，
+                        这样才能服务于其他逻辑。
+                    </p>
+
+                    <p>
+                        <strong>通用性</strong>体现在它被众多“裁剪”逻辑调用，要保持中立；
+                        <strong>简单性</strong>体现在任务明确、依赖低。
+                    </p>
+
+                    <p>
+                        如果新需求加在 <code>Clip</code> 中，就势必增加它的依赖性（依赖视野原点与
+                        <code>direction</code> 的空间关系），从而降低封闭性，增加受干扰的机会。
+                        另外，它也变得不再那么“通用”——如果有些地方就是希望按照原来的逻辑裁剪，又该怎么办？
+                    </p>
+
+                    <p>
+                        更深一层来说，<code>Clip</code> 作为服务者，它的<strong>出度远远小于入度</strong><sup><a href="#footnote1">1</a></sup>。
+                    </p>
+
+                    <p>
+                        这意味着 <code>Clip</code> 的变动会比较敏感，影响面较大。在程序设计中（包括架构层面对一个模块的定位），
+                        它属于“核心”代码，不应该轻易改动理论上也不会频繁变化的逻辑。
+                    </p>
+
+                    <p>
+                        而处于外围的 <code>GoingToClipSomething</code> 等函数则相对善变，
+                        需求变化、适配逻辑等都可能涉及它们，因此应该尽可能保持其较低的入度，
+                        避免影响其他代码。
+                    </p>
+
+                    <hr>
+
+                    <ol>
+                        <li id="footnote1">
+                            被一处逻辑调用算一个<strong>入度</strong>，自己调用其他逻辑算一个<strong>出度</strong>。
+                        </li>
+                    </ol>
+
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Jerry. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../action.js"> </script>
+</body>
+
+</html>
