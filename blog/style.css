@@ -8,7 +8,13 @@
     --border: #eaeaea;
     --link: #000000;
     --link-hover: #555555;
-    --gap-size: 10;
+    --gap-size: 0.625rem; /* 10px converted to rem */
+    
+    /* Added variables for article elements & tables */
+    --marker-color: #8e8d8d;
+    --table-header-bg: #f6f8fa;
+    --table-border: #d0d7de;
+    --table-hover-bg: #f3f4f6;
 }
 
 [data-theme="dark"] {
@@ -18,7 +24,12 @@
     --border: #2c2c2c;
     --link: #ffffff;
     --link-hover: #aaaaaa;
-    --gap-size: 10;
+    
+    /* Dark theme overrides for article elements & tables */
+    --marker-color: #666666;
+    --table-header-bg: #1a1a1a;
+    --table-border: #333333;
+    --table-hover-bg: #1f1f1f;
 }
 
 /* ==========================================
@@ -39,13 +50,13 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 43.75rem; /* 700px */
     margin: 0 auto;
     padding: 4rem 1.5rem;
 }
 
 header {
-    margin-bottom: 4rem; /* Keeps layout spaced out elegantly */
+    margin-bottom: 4rem; 
 }
 
 /* Common Interactive Elements */
@@ -80,8 +91,8 @@ footer {
 }
 
 .avatar {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem; /* 56px */
+    height: 3.5rem;
     border-radius: 50%;
     background: linear-gradient(45deg, #ff7b00, #ffae00);
     display: inline-block;
@@ -90,7 +101,7 @@ footer {
 header h1 {
     font-size: 1.75rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.03em;
     margin-bottom: 0.5rem;
 }
 
@@ -102,7 +113,7 @@ header h1 {
 .feed-title {
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
     color: var(--muted);
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -190,7 +201,7 @@ footer a:hover {
 .content-title {
     font-size: 2.2rem;
     font-weight: 700;
-    letter-spacing: -0.75px;
+    letter-spacing: -0.04em;
     line-height: 1.25;
 }
 
@@ -198,14 +209,14 @@ footer a:hover {
 .content p {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
-    line-height: 1.7; /* Slightly higher readability line height for reading articles */
+    line-height: 1.7; 
 }
 
 .content h2 {
     font-size: 1.4rem;
     font-weight: 600;
     margin: 2.5rem 0 1rem 0;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.02em;
 }
 
 .content blockquote {
@@ -216,51 +227,101 @@ footer a:hover {
     margin: 2rem 0;
 }
 
-.content ul{
-    padding-left: calc(var(--gap-size) * 3);
+.content ul, 
+.content ol {
     margin: var(--gap-size) 0;
-    color: var(--text-color-light);
+    padding-left: 1.8em;
 }
 
-.content ul li {
-    margin-bottom: 6px;
+.content ul li,
+.content ol li {
+    margin-bottom: 0.4em;
     font-size: 1rem;
     line-height: 1.4;
 }
 
-/* Optional: Subtle color for the bullets themselves */
-.content ul li::marker {
-    color: #8e8d8d;
+/* Color for the bullets/numbers themselves */
+.content ul li::marker,
+.content ol li::marker {
+    color: var(--marker-color);
 }
 
-.content pre {
-    background: #0d1117;
-    color: #e6edf3;
-    border-radius: 10px;
-    overflow-x: auto;
-    line-height: 1.6;
-    font-size: 14px;
-    font-family:
-        "JetBrains Mono",
-        "Fira Code",
-        "Cascadia Code",
-        "SFMono-Regular",
-        Consolas,
-        Monaco,
-        monospace;
-    border: 1px solid #30363d;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.content pre{
+    padding: 0 2em;
 }
 
 .content pre code {
-    display: block;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font-size: 0.875rem; /* 14px */
+    line-height: inherit;
     white-space: pre;
+    font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
 }
 
-.content math {
+.content figure {
+    margin: 2em auto;
+    text-align: center;
+}
+
+.content figure img {
     display: block;
-    margin: 1em 0;
-    font-size: 1.2em;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.content figcaption {
+    margin-top: 0.8em;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* ===== Table ===== */
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.content caption {
+    caption-side: top;
+    margin-bottom: 0.8em;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Header */
+.content thead {
+    background: var(--table-header-bg);
+}
+
+.content th {
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Cells */
+.content th{
+    padding: 0.3em 0.6em;
+    border-bottom: 1px solid var(--table-border);
+    border-top: 1px solid var(--table-border);
+}
+
+.content td {
+    padding: 0.3em 0.6em;
+    border-bottom: 1px solid var(--table-border);
+}
+
+/* First column emphasis */
+.content tbody td:first-child {
+    font-weight: 500;
 }
 
 /* Article Footer Border modification */

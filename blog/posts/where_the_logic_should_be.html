@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>软件设计思考：逻辑应该放在哪里？</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -26,34 +38,28 @@
 
                     <p>如果有这样的代码：</p>
                     <pre><code>
-    function Clip(pos:vec3, direction:vec3):void{/* your logic */}
+function Clip(pos:vec3, direction:vec3):void{/* your logic */}
 
-    function GoingToClipSomething():void{
-        const _pos:vec3=new vec3(a,b,c);
-        const _dir:vec3=new vec3(d,e,f);
-        Clip(_pos,_dir);
-    }
+function GoingToClipSomething():void{
+    const _pos:vec3=new vec3(a,b,c);
+    const _dir:vec3=new vec3(d,e,f);
+    Clip(_pos,_dir);
+}
 
-    function GoingToClipSomeOtherThing():void{
-        //....
-        Clip(...);
-    }
+function GoingToClipSomeOtherThing():void{
+    //....
+    Clip(...);
+}
 
-    function GoingToClip...;
+function GoingToClip...;
                         </code></pre>
                     <p>
-                        Clip 函数会在 <code>pos</code> 位置开始，将 <code>direction</code> 一侧的所有东西裁剪掉（想象剖切钢管这件事）。
-                    </p>
-
-                    <p>
-                        上面的逻辑没有问题，不过需求有变，希望总是剖切<strong>视野能见到的一侧</strong>。那么就需要判断
-                        <code>direction</code> 的方向是否指向视野原点，如果不是就取反即可，也很简单，不是么。
+                        Clip 函数会在 <code>pos</code> 位置开始，将 <code>direction</code> 一侧的所有东西裁剪掉（想象剖切钢管这件事）。 上面的逻辑没有问题，不过需求有变，希望总是剖切视野能见到的一侧。那么就需要判断direction 的方向是否指向视野原点，如果不是就取反即可，也很简单，不是么。
                     </p>
 
                     <p>
                         但，思考点来了：<strong>这个逻辑我要添加在哪里？是 GoingToClip 函数里面，还是 Clip 函数里面？</strong>
                     </p>
-
                     <ul>
                         <li>
                             放在GoingToClip... 的话，Clip逻辑保持简单直接： 在pos位置开始，将direction 一侧的所有东西裁剪掉。
@@ -114,7 +120,7 @@
         </footer>
     </div>
 
-    <script src="../action.js"> </script>
+    <script src="../js/action.js"> </script>
 </body>
 
 </html>

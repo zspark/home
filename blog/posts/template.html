@@ -4,7 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning to love slow mornings - Personal Blog</title>
+    <title>Template</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'style', 'textarea', 'pre', 'code']
+            },
+        };
+    </script>
+    <script id="MathJax-script" async src="../js/mathjax-3.2.2/tex-svg.js"> </script>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -20,7 +44,7 @@
             <article>
                 <header>
                     <div class="meta">Published July 7, 2026 &bull; 3 min read</div>
-                    <h1>Learning to love slow mornings</h1>
+                    <h1>Template</h1>
                 </header>
 
                 <div class="content">
@@ -32,14 +56,14 @@
 function Clip(pos:vec3, direction:vec3):void{/* your logic */}
 
 function GoingToClipSomething():void{
-const _pos:vec3=new vec3(a,b,c);
-const _dir:vec3=new vec3(d,e,f);
-Clip(_pos,_dir);
+    const _pos:vec3=new vec3(a,b,c);
+    const _dir:vec3=new vec3(d,e,f);
+    Clip(_pos,_dir);
 }
 
 function GoingToClipSomeOtherThing():void{
-//....
-Clip(...);
+    //....
+    Clip(...);
 }
 
 function GoingToClip...;
@@ -54,6 +78,13 @@ function GoingToClip...;
                         up. No checking local code compiles, no system diagnostic logs, no instant messaging channels.
                     </p>
 
+                    <p>
+                        The equation is $E = mc^2$.
+                        $$
+                        f(x)=\sum_{i=0}^{n}\frac{x^i}{i!}
+                        $$
+                    </p>
+
                     <blockquote>
                         "True structural efficiency isn't about running at maximum clock speed from the second power is
                         applied. It's about systemic pacing."
@@ -64,11 +95,57 @@ function GoingToClip...;
                         at my keyboard, my thoughts are parsed, sorted, and ready for actual intention rather than
                         chaotic reaction.</p>
 
+
+                    <figure>
+                        <img src="../assets/unnamed.png" />
+
+                        <figcaption>
+                            Figure 1. Affine space consists of points and vectors.
+                        </figcaption>
+                    </figure>
+
                     <ul>
                         <li>Simple list item one</li>
                         <li>Simple list item two</li>
                         <li>Simple list item three</li>
                     </ul>
+
+                    <p>Instead, I just make coffee and watch the morning light track slowly across the wall. It sounds
+                        basic, almost cliché, but the mental buffer it creates is real. By the time I actually sit down
+                        at my keyboard, my thoughts are parsed, sorted, and ready for actual intention rather than
+                        chaotic reaction.</p>
+
+                    <table>
+                        <caption>
+                            Table 1. Comparison of different vector spaces
+                        </caption>
+
+                        <thead>
+                            <tr>
+                                <th>Space</th>
+                                <th>Contains</th>
+                                <th>Main Operation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Scalar Field</td>
+                                <td>Scalars</td>
+                                <td>Addition, Multiplication</td>
+                            </tr>
+                            <tr>
+                                <td>Vector Space</td>
+                                <td>Vectors + Scalars</td>
+                                <td>Vector Addition, Scalar Multiplication</td>
+                            </tr>
+                            <tr>
+                                <td>Affine Space</td>
+                                <td>Points + Vectors</td>
+                                <td>Point Translation</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </article>
         </main>
@@ -77,8 +154,8 @@ function GoingToClip...;
             <p>&copy; 2026 Jerry. All rights reserved.</p>
         </footer>
     </div>
-
-    <script src="../action.js"> </script>
 </body>
+
+<script src="../js/action.js"> </script>
 
 </html>
