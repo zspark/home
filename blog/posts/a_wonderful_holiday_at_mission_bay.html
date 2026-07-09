@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry's Blog</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="nav-back">
+            <a href="../" class="back-link">&larr; Back to thoughts</a>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+        </nav>
+
+        <main>
+            <article>
+                <header>
+                    <div class="meta">Published July 8 &bull; 2026 </div>
+                    <h1>A Wounderful Day At Mission Bay</h1>
+                </header>
+
+                <div class="content">
+                    <p>Last weekend, I spent a relaxing day at Mission Bay, and it turned out to be one of the most
+                        enjoyable holidays I have had in a long time. The weather was warm and sunny, with a gentle
+                        breeze coming from the sea. As soon as I arrived, I could see families having picnics, friends
+                        playing volleyball, and people walking along the beautiful waterfront.</p>
+
+                    <p>I started my day with a leisurely walk beside the beach. The calm blue water sparkled under the
+                        sunlight, and the sound of the waves created a peaceful atmosphere. I took many photos of the
+                        scenery, including the boats sailing across the bay and the green parks surrounding the
+                        coastline. The fresh sea air made me feel refreshed and energized.</p>
+
+                    <figure>
+                        <img src="../assets/mission-bay-new-zealand.jpg" />
+
+                        <figcaption>
+                            Figure 1. Affine space consists of points and vectors.
+                        </figcaption>
+                    </figure>
+
+                    <p>After my walk, I found a comfortable spot on the grass to enjoy a picnic lunch. I brought
+                        sandwiches, fresh fruit, and a cold drink. While eating, I watched children building sandcastles
+                        and people kayaking on the water. Everyone seemed cheerful and relaxed, which made the holiday
+                        even more enjoyable.</p>
+
+                    <p>In the afternoon, I explored more of the area. I rented a bicycle and rode along the coastal
+                        path, enjoying the stunning views of the harbor. Along the way, I stopped to admire the colorful
+                        flowers, tall palm trees, and the peaceful beaches. I also treated myself to an ice cream from a
+                        nearby café, which was the perfect snack on such a beautiful day.</p>
+
+                    <figure>
+                        <img src="../assets/Activities-header-1024x682.jpg" />
+
+                        <figcaption>
+                            Figure 1. Affine space consists of points and vectors.
+                        </figcaption>
+                    </figure>
+
+                    <p>As the sun began to set, the sky gradually turned shades of orange, pink, and purple. The sunset
+                        over Mission Bay was breathtaking. I sat quietly by the beach, listening to the waves and
+                        appreciating the beauty of nature. It was a perfect ending to a wonderful holiday.</p>
+
+                    <p>My trip to Mission Bay gave me the opportunity to relax, enjoy nature, and forget about the
+                        stress of daily life. The combination of beautiful scenery, pleasant weather, and a peaceful
+                        atmosphere made it an unforgettable experience. I returned home feeling happy, refreshed, and
+                        grateful for such a memorable day. I hope to visit Mission Bay again soon and create even more
+                        wonderful memories.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Jerry. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+<script src="../js/action.js"> </script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry's Blog</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="nav-back">
+            <a href="../" class="back-link">&larr; Back to thoughts</a>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+        </nav>
+
+        <main>
+            <article>
+                <header>
+                    <div class="meta">Published July 8 &bull; 2026 </div>
+                    <h1>中国家长</h1>
+                </header>
+
+                <div class="content">
+                    <p>昨天与我堂弟牛畅谈，我们一路从吃晚饭聊到了凌晨一点半，内容无非大家庭与游戏。</p>
+
+                    <p>我想对于我而言是很少能与人长时间交流的，主要原因还是没有知己。中国关系社会下成长的人，在我看来绝大多数还是适应的，毕竟泱泱五千年历史，然而确实有那么一部分人是个例外。
+                    </p>
+
+                    <p>我们虽聊了很多，但有一点引发了我的思考，就是家长们苦口婆心数十载“为你好”，到头来为何事与愿违，且不论反目成仇，就连正常的关系尚且难以维系？孩子在成长过程中，他们从一张白纸变成了“不对付”，虽说成长过程中难免有矛盾，但在我看来中国家长的认知才是根本原因。不过现实很难苟同，家长的“地位”与“威信”是不可撼动的，他们是没能力反思自身问题，于是导致更大的矛盾，这是个严肃而危险的信号。现代教育都在主张培养学生的“批判性思维”，这就是说要对“已然”的东西、行为保有合理的思考能力，要对他们发出理性的质疑，挑战“何以为此”。拿“为你好”而言，错不在这种行为，望子成龙、望女成凤我想在各个国家、民族里面都是存在且合理的，重点在以这种愿望为引，家长们设计的方式方法到头来“事倍工反”，这是需要思考的表层现象。深一步，家长们痛心疾首，哭天闵地的控诉他们的付出为什么得不到子女的感恩，这才是值得思考的。然而传统教育、社会环境孕育的他们是不可能有这种批判性思考的，于是一错再错，恶性循环，让两代人倍感负重，疲惫一生，这，还是往好的方面说的。
+                    </p>
+
+                    <figure>
+                        <img src="../assets/20251229094509_MixCollage-29-Dec-2025-03-14-PM-7162.avif" />
+                    </figure>
+
+                    <p>中国家长是懂变通的，厚黑学优等生，不过这种变通是局限的，它只能发生在固有模式中，以一种大多数家长认可、做、不会被彼此指责的方式进行。这种刻板样本化的行为模式让他们彼此还有身边的人感受到了安心与成熟稳重，但对子女发展造成了巨大的损失。举个我身边的例子，我哥的亲闺女目前正在高三，学习有些偏科，物理最弱。我哥找了辅导班为其补习，听上去家长“为你好”，但在我听完侄女的描述后发现这种补习不但没有效果，还牺牲了学生仅有的一半休息时间。补习的目的肯定是为了补全学生认知的偏差，着重纠正并强化错、弱的能力，然而侄女的小补习班是缩小版的学校课堂，老师有既定的（也不知道从哪里抄来的）补习大纲与计划，按照该进度推进即可。如此一来时间便浪费在了原本已经掌握的方面，而那些错与弱的能力只能看自己的造化了。我想表达的重点是：我哥并没有意识到自己行为的真正目的，而是与所有（可以说所有）同学的家长一样给孩子报个班，付出金钱好让自己心理不会在以后那么波动，比如遗憾或者愧疚，至于侄女高考的结果，那就是她的事情了，足够幸运且成绩不错的话，感谢父母，差的话那就是自己没有足够努力了。
+                    </p>
+
+                    <p>进一步思考，中国两代人之间的关系是不对等的，我记得当年自己大学毕业回到老爷子家中，在考研不中半年后，我与父亲吵了一架。核心争论点是父亲嫌我没出息，不是因为考试失败，而是过后没有新的动作，他希望我要足够优秀。我说这个世界有比我优秀的，同样有比我不如的，是好是坏总要人当，为什么就不能是我？父亲失望之际叹道人都是与比自己强的比，哪能与弱者比。家长们这种只期盼功成，不接受失败的认知与其在教育子女的模式上存在严重不对等。没有能力做事情但一直祈求达成，这是赌徒行为，所有我一项不看寒门高中去夸赞父母的，我觉得只是小子机缘好，没出现太多对课本知识理解的偏差，至于父母，无所谓是甲还是乙。
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Jerry. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+<script src="../js/action.js"> </script>
+
+</html>
