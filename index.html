@@ -9,8 +9,8 @@
     <meta name="applicable-device" content="pc,pad,mobile" />
     <meta name="referrer" content="always" />
     <title>Jerry Chaos</title>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="www/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="www/style.css">
 </head>
 
 <!-- <body style="background-image: url('./bg.jpg'); background-repeat: repeat; background-size: cover; background-attachment: fixed;"> -->
@@ -22,7 +22,7 @@
     <div id="searchContainer" class="search-container">
         <div class="search size-full">
             <svg class="icon size-40">
-                <use href="./icons.svg#icon-google-chrome" xlink:href="./icons.svg#icon-google-chrome">
+                <use href="www/icons.svg#icon-google-chrome" xlink:href="www/icons.svg#icon-google-chrome">
                 </use>
             </svg>
             <input type="text" id="searchInput" class="search-input" placeholder="Search with Google or enter address">
@@ -177,6 +177,7 @@
             color: "#f6ebff",
             data: [
                 {url: "./blog", name: "Jerry Chaos Blog", large: true},
+                {url: "./lab", name: "Jerry Chaos Lab", large: true},
                 {url: "https://www.songho.ca/", name: "Song Ho Ahn's Homepage"},
                 {url: "https://blog.lmorchard.com", name: "Lmorchard's Blog"},
                 {url: "https://www.jayconrod.com/posts", name: "Jay Conrod's Blog"},
@@ -227,7 +228,7 @@
         return `<a tabindex="-1" href="${item.url}" class="shortcut-item" target="_blank">
     <div class="shortcut-icon size-48">
         <svg class="icon size-full">
-            <use href="./icons.svg#${_icon}" xlink:href="./icons.svg#${_icon}"></use>
+            <use href="www/icons.svg#${_icon}" xlink:href="www/icons.svg#${_icon}"></use>
         </svg>
     </div>
     <div class="shortcut-title text-small">${item.name}</div>
@@ -241,13 +242,13 @@
             return `<div class="card-item">
     <div class="card-item-left">
         <svg class="icon size-18">
-            <use href="./icons.svg#${_icon}" xlink:href="./icons.svg#${_icon}"></use>
+            <use href="www/icons.svg#${_icon}" xlink:href="www/icons.svg#${_icon}"></use>
         </svg>
         <a class="card-item-link ${item.large ? "text-large" : "text-normal"}" tabindex="-1" href="${item.url}" target="_blank">${item.name}</a>
     </div>
     ${item.help ? `<a class="card-item-link" tabindex="-1" href="${item.help}" target="_blank">
         <svg class="icon size-14 pointer">
-            <use href="./icons.svg#icon-mark-question" xlink:href="./icons.svg#icon-mark-question"></use>
+            <use href="www/icons.svg#icon-mark-question" xlink:href="www/icons.svg#icon-mark-question"></use>
         </svg>
     </a>`: ``}
 </div>`;

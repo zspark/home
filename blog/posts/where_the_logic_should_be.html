@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件设计思考：逻辑应该放在哪里？</title>
+    <title>Jerry's Blog</title>
     <script>
         (function () {
             const savedTheme = localStorage.getItem('theme');
@@ -17,7 +17,7 @@
             }
         })();
     </script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../www/style.css">
 </head>
 
 <body>
@@ -30,8 +30,11 @@
         <main>
             <article>
                 <header>
-                    <div class="meta">Published July 7, 2026 &bull; 3 min read</div>
-                    <h1>Where The Logic Should Be?</h1>
+                    <div id="date" class="meta">Published July 7, 2026 &bull; 3 min read</div>
+                    <h1 id="title">Where The Logic Should Be?</h1>
+                    <p hidden id="description">A design tradeoff between keeping a core function generic and stable
+                        versus
+                        placing new business-specific logic in callers for better separation of concerns.</p>
                 </header>
 
                 <div class="content">
@@ -98,7 +101,7 @@ function GoingToClip...;
         </footer>
     </div>
 
-    <script src="../js/action.js"> </script>
+    <script src="../www/action.js"> </script>
 </body>
 
 </html>

@@ -7,3 +7,5 @@
 ```python
 python3 -m http.server 8000
 ```
+# how to build blog?
+setup `nodejs` first, then just run `node build.js`

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry's Blog</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="www/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div></div>
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">🌓</button>
+            </div>
+            <h1>HI, I'M JERRY, OR JUST J.</h1>
+            <p class="bio">WRITING ABOUT DESIGN, SMALL HOBBIES, AND WHATEVER ELSE CATCHES MY ATTENTION. JUST A QUIET
+                CORNER ON THE INTERNET. </p>
+        </header>
+
+        <main>
+            <!--h2 class="feed-title">Recent Writing</h2-->
+            <ul>
+                <li class="post-item">
+                    <div class="post-meta">{{date}}</div>
+                    <a href="posts/{{url}}" class="post-link">{{title}}</a>
+                    <p class="post-desc">{{description}}</p>
+                </li>
+            </ul>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Jerry. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="www/action.js"> </script>
+</body>
+
+</html>
