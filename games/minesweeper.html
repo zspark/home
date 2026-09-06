@@ -263,10 +263,9 @@
 
                     const cellEl = document.createElement('div');
                     cellEl.classList.add('cell');
-                    cellEl.addEventListener('mousedown', (e) => aaaa(e, r, c));
-                    //cellEl.addEventListener('mouseup', (e) => aaaa(e, r, c));
-                    cellEl.addEventListener('contextmenu', (e) => {e.preventDefault();});
-                    //cellEl.addEventListener('dblclick', (e) => aaaa(e, r, c));
+                    cellEl.addEventListener('mousedown', (e) => handleEvent(e, r, c));
+                    //cellEl.addEventListener('mouseup', (e) => handleEvent(e, r, c));
+                    //cellEl.addEventListener('dblclick', (e) => handleEvent(e, r, c));
 
                     cellData.element = cellEl;
                     boardElement.appendChild(cellEl);
@@ -278,7 +277,7 @@
 
         let _time = -1;
         let _buttonID = -1;
-        function aaaa(e, r, c) {
+        function handleEvent(e, r, c) {
             const _t = Date.now();
             if (_t - _time < 200 && _buttonID != e.button) {
                 _time = _t;
@@ -502,6 +501,7 @@
         }
 
         // Initialize the game on load
+        document.body.addEventListener('contextmenu', (e) => {e.preventDefault();});
         initGame();
     </script>
 </body>
